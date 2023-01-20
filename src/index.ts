@@ -1,7 +1,5 @@
-import http from 'http';
-
-import { Rapid } from '../core/Rapid';
-import { Router, emitter } from '../core/Router';
+import { Rapid } from '@core/Rapid';
+import { Router } from '@core/Router';
 
 const PORT = process.env.PORT || 8080;
 
