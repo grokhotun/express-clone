@@ -1,11 +1,10 @@
 import http from 'http';
 
-export const useJSONSerializer = <T>(
+export const JSONMiddleware = <T>(
   request: http.IncomingMessage,
   response: http.ServerResponse<http.IncomingMessage>
 ) => {
-  return {
-    ...response,
+  Object.assign(response, {
     sendInJSON(payload: T[]) {
       response.writeHead(200, {
         'Content-Type': 'application/json'
@@ -18,5 +17,5 @@ export const useJSONSerializer = <T>(
         })
       );
     }
-  };
+  });
 };

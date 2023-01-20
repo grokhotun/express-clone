@@ -1,5 +1,4 @@
 import { Router } from '@core/Router';
-import { useJSONSerializer } from '@core/utils';
 
 const router = new Router();
 
@@ -23,11 +22,12 @@ const users = [
 ];
 
 router.get('/users', (request, response) => {
-  useJSONSerializer(request, response).sendInJSON(users);
+  response.sendInJSON(users);
 });
 
 router.post('/users', (request, response) => {
-  useJSONSerializer(request, response).sendInJSON(users);
+  console.log(response.body);
+  response.sendInJSON(users);
 });
 
 export { router };
