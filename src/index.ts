@@ -1,9 +1,12 @@
 import http from 'http';
-import { Router, emitter } from './Router';
+
+import { Rapid } from '../core/Rapid';
+import { Router, emitter } from '../core/Router';
 
 const PORT = process.env.PORT || 8080;
 
 const router = new Router();
+const rapid = new Rapid();
 
 router.get('/login', (request, response) => {
   response.end('You has sent request to login');
@@ -13,10 +16,8 @@ router.get('/logout', (request, response) => {
   response.end('You has sent request to logout');
 });
 
-const server = http.createServer((request, response) => {
-  emitter.emit(`[${request.url}]:[${request.method}]`, request, response);
-});
+rapid.addRouter(router);
 
-server.listen(PORT, () => {
+rapid.listen(PORT, () => {
   console.log(`Server has been started on port ${PORT} `);
 });

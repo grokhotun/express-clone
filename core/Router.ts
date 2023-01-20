@@ -1,16 +1,10 @@
-import http from 'http';
 import EventEmitter from 'events';
+import { Callback, Method } from './types';
 
 export const emitter = new EventEmitter();
 
-type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
-type Callback = (
-  request: http.IncomingMessage,
-  response: http.ServerResponse<http.IncomingMessage>
-) => void;
-
 export class Router {
-  private endpoints: Record<string, Record<Method, Callback> | {}>;
+  public endpoints: Record<string, Record<Method, Callback> | {}>;
 
   constructor() {
     this.endpoints = {};
