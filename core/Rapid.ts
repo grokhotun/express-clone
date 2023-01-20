@@ -30,7 +30,7 @@ export class Rapid {
     });
   }
 
-  addRouter(router: Router) {
+  registerRouter(router: Router) {
     Object.keys(router.endpoints).forEach(url => {
       const endpoint = router.endpoints[url];
       Object.keys(endpoint).forEach(method => {
